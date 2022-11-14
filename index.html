@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="ad.size" content="width=300,height=250">
+    <meta charset="UTF-8">
+    <title>Survy Demo</title>
+    <script src="config_new.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="ad_box" id="ad_box">
+        <!--
+            - use class 'hide' to hide the pages
+            - use class 'invisible' to remove the tag
+         -->
+
+        <!-- landing page -->
+        <div class="landing_page ">
+            <div class="landing_container">
+                <div id="logo"></div>
+                <div id="landing_content"></div>
+                <div id="survey-btn"></div>
+            </div>
+        </div>
+
+        <!-- Q&A page -->
+        <div class="qna_page hide">
+            <!-- que_container -->
+            <div class="que_container">
+                <div class="Qbox" qid=""></div> <!-- Which Programing Language did you learn ? -->
+                <hr class="hr_35">
+            </div>
+            <!-- Option_comment_container -->
+            <div class="Option_comment_container">
+                <div id="Option_comment">Choose all applicable </div>
+            </div>
+            <!-- options_container -->
+            <div class="options_container" style="height:145px;">
+            </div>
+            <!-- bottom_container -->
+            <div class="bottom_container">
+                <button id="next-btn"></button>
+            </div>
+        </div>
+
+        <!-- Thanks Page -->
+        <div class="thanks_page hide">
+            <div class="thankyou_container">
+                <div id="thanks_text"></div>
+
+                <div class="coupon_container">
+                    <span id='offer_info' class=""><i></i></span>
+                    <div id="coupon_code_box" class="coupon_code invisible">
+                        <input id="copyvalue" type="text" readonly value="" />
+                        <button onclick="copyIt()" class="copybtn">COPY</button>
+                    </div>
+                </div>
+                <div id="ending_logo"></div>
+            </div>
+        </div>
+
+
+    </div>
+    <script src="index.js"></script>
+    <script src="tracker.js"></script>
+
+    <script>
+        creativeLoad_Tracking()
+        firstInteraction_Tracking()
+        lastPageIntreaction_Tracking()
+    </script>
+
+    <script src="controller.js"></script>
+    <!-- <script src="main_2.js"></script> -->
+    <script src="main.js"></script>
+
+
+
+</body>
+
+</html>
