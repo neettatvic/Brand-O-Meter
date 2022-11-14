@@ -159,7 +159,7 @@ function question_render(que_obj_index) {
         Qbox.setAttribute('qid', questions[que_obj_index].id)
 
         //lable info
-        var lableText = questions[que_obj_index].lable;
+        var lableText = questions[que_obj_index].label;
         var lableID = questions[que_obj_index].label_id;
 
         //populate the input html 
