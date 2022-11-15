@@ -19,11 +19,11 @@ var que_font_size = basic_creative_config.Question_Font_Size;
 var que_font_color = basic_creative_config.Quention_Font_Color;
 var Answer_Font_Size = basic_creative_config.Answer_Font_Size;
 var Answer_Font_Color = basic_creative_config.Answer_Font_Color;
-var Options_bg_Color = basic_creative_config.Options_bg_Color;
+var Options_bg_Color = basic_creative_config.Options_bg_Color ||  rgba(231, 208, 208, 0.76);
 var Option_selection_bg_Color = basic_creative_config.Option_selection_bg_Color;
 var Answer_Font_Color_On_Option_selection = basic_creative_config.Answer_Font_Color_On_Option_selection;
 var Next_Btn_text = basic_creative_config.Next_Btn_text;
-var Next_Front_Color = basic_creative_config.Next_Front_Color;
+var Next_Font_Color = basic_creative_config.Next_Font_Color;
 var Next_Bg_Color = basic_creative_config.Next_Bg_Color;
 
 
@@ -49,7 +49,7 @@ options_container.style.color = Answer_Font_Color
 var next_btn = document.querySelector("#next-btn");
 
 next_btn.innerText = Next_Btn_text;
-next_btn.style.color = Next_Front_Color;
+next_btn.style.color = Next_Font_Color;
 next_btn.style.backgroundColor = Next_Bg_Color
 
 
@@ -75,7 +75,7 @@ function question_render(que_obj_index) {
         next_btn.classList.remove("hide");
 
         // next_btn.disabled = true
-        next_btn.style.opacity = "0.6";
+        next_btn.style.opacity = "0.7";
         next_btn.disabled = true;
         next_btn.style.cursor = "not-allowed";
     }
@@ -86,7 +86,7 @@ function question_render(que_obj_index) {
     else {
         next_btn.classList.remove("hide");
         // next_btn.disabled = true
-        next_btn.style.opacity = "0.6";
+        next_btn.style.opacity = "0.7";
         next_btn.disabled = true;
         next_btn.style.cursor = "not-allowed";
         option_comment.classList.add("hide");
@@ -110,19 +110,20 @@ function question_render(que_obj_index) {
             div.setAttribute('role', option[j].role)
             div.setAttribute('oid', option[j].id)
             div.setAttribute('id', 'option_' + (j + 1))
+            div.setAttribute('selected', 'false')
             // div.setAttribute('onclick', 'optionSelection(this)')
             // div.setAttribute('selected', true)
             div.innerText = option[j].text
             div.style.backgroundColor = Options_bg_Color
             options_container.appendChild(div)
         }
-
+        // document.querySelector(".Abox").style.setProperty('--optionBgColor', Options_bg_Color)
         //option selection function 
         var allAbox = document.querySelectorAll('.Abox')
         for (let k = 0; k < allAbox.length; k++) {
             allAbox[k].addEventListener('click', function (e) {
                 var selected = e.target.getAttribute('selected')
-                if (selected == null) {
+                if (selected == 'false') {                
                     console.log("Clicked option will mark as selected true!");
                     e.target.setAttribute('selected', true)
                     e.target.style.backgroundColor = Option_selection_bg_Color;
@@ -132,7 +133,7 @@ function question_render(que_obj_index) {
                         nextQueKey = ''
                         var oidOfSelectedOption = document.getElementById('option_' + (k + 1)).getAttribute('oid')
                         nextQueKey = nextQueKey + oidOfSelectedOption;
-                        console.log("nextQueKey: "+nextQueKey)
+                        console.log("nextQueKey: " + nextQueKey)
 
                         //remove the question text and all the options 
                         document.querySelectorAll(".Abox").forEach(e => e.remove());
@@ -143,7 +144,7 @@ function question_render(que_obj_index) {
                     }
                 } else {
                     console.log("Clicked option will mark as selected false!");
-                    e.target.removeAttribute('selected');
+                    e.target.setAttribute('selected', 'false');
                     e.target.style.backgroundColor = Options_bg_Color;
                     e.target.style.color = Answer_Font_Color;
                     nextButtonStatusUpdation()
@@ -165,7 +166,6 @@ function question_render(que_obj_index) {
         //populate the input html 
         // options_container.appendChild(div)
 
-
         options_container.innerHTML = `
         <div class="container_lable">
             <div class="group">                    
@@ -175,6 +175,10 @@ function question_render(que_obj_index) {
                 <label class="label">${lableText}</label>                
             </div>
         </div>`
+        document.querySelector(".bar").style.setProperty('--inputBoxBar', que_font_color)
+        document.querySelector(".label").style.setProperty('--inputBoxBar', que_font_color)
+        // document.querySelector(".input").style.setProperty('--inputBoxBar', que_font_color)
+
     }
 }
 
@@ -207,10 +211,10 @@ function nextButtonStatusUpdation() {
         next_btn.disabled = false
         next_btn.style.opacity = "1";
         next_btn.style.cursor = "pointer";
-    } else {
+        //css need to add for hover 
+    }else {
         next_btn.disabled = true
-        next_btn.opta
-        next_btn.style.opacity = "0.6";
+        next_btn.style.opacity = "0.7";
         next_btn.style.cursor = "not-allowed";
     }
 }
@@ -229,7 +233,7 @@ next_btn.addEventListener('click', function () {
             }
         }
     }
-    console.log("nextQueKey: "+nextQueKey)
+    console.log("nextQueKey: " + nextQueKey)
 
     //remove the question text and all the options 
     document.querySelectorAll(".Abox").forEach(e => e.remove());

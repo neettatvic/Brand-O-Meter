@@ -23,7 +23,7 @@ var Options_bg_Color = basic_creative_config.Options_bg_Color;
 var Option_selection_bg_Color = basic_creative_config.Option_selection_bg_Color;
 var Answer_Font_Color_On_Option_selection = basic_creative_config.Answer_Font_Color_On_Option_selection;
 var Next_Btn_text = basic_creative_config.Next_Btn_text;
-var Next_Front_Color = basic_creative_config.Next_Front_Color;
+var Next_Font_Color = basic_creative_config.Next_Font_Color;
 var Next_Bg_Color = basic_creative_config.Next_Bg_Color;
 
 
@@ -49,7 +49,7 @@ options_container.style.color = Answer_Font_Color
 var next_btn = document.querySelector("#next-btn");
 
 next_btn.innerText = Next_Btn_text;
-next_btn.style.color = Next_Front_Color;
+next_btn.style.color = Next_Font_Color;
 next_btn.style.backgroundColor = Next_Bg_Color
 
 
@@ -235,38 +235,3 @@ function next_question_iteration(index) {
         }
     }
 }
-
-// document.querySelector("#next-btn").addEventListener('click', function () {
-//     var allAbox = document.querySelectorAll('.Abox')
-//     var nextQueKey = ''
-
-//     for (let k = 0; k < allAbox.length; k++) {
-//         if (allAbox[k].hasAttribute('selected')) {
-//             var oidOfSelectedOption = document.getElementById('option_' + (k + 1)).getAttribute('oid')
-//             nextQueKey = nextQueKey + oidOfSelectedOption;
-//         }
-//     }
-//     console.log(nextQueKey)
-// })
-
-
-
-// response: 1:BA|2:GFE|3:|4:|5:|6:
-// visual: 1:BC|2:ABC|3:|4:|5:|6:
-// questions.forEach((row) => {
-//     // console.log(i)
-//     // console.log()
-//     console.log(row][i].id)
-//     console.log(row[i].text)
-//     console.log(row[i].type)
-//     console.log(row[i].options)
-//     console.log(row[i].next_question)
-
-
-//     QboxInnerText = row.text
-//     Qbox.setAttribute('qid',row.id)
-
-// })
-
-
-

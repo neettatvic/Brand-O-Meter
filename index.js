@@ -18,7 +18,8 @@ var bg_color = bg.background_color || null;
 //landing page values from config 
 var brandLogoURL = landing_page.brandLogo || null;
 var startScreenText = landing_page.startScreenText || null;
-var start_cta_Bg_color = landing_page.start_cta_Bg_color || null;
+var startScreenTextColor = landing_page.startScreenTextColor || rgb(49, 99, 210);
+var start_cta_Bg_color = landing_page.start_cta_Bg_color || rgb(49, 99, 210);
 var start_cta_text = landing_page.start_cta_text || null;
 
 //thanks you page values from config 
@@ -103,7 +104,9 @@ if (landing_page.startscreen && brandLogoURL != null) {
     setLog(brandLogoURL);
 }
 if (landing_page.startscreen && startScreenText != null) {
+    landing_content.style.color = startScreenTextColor;
     landing_content.innerText = startScreenText;
+
 }
 if (landing_page.startscreen && start_cta_text != null) {
     survey_btn.style.backgroundColor = start_cta_Bg_color;
