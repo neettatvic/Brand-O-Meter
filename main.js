@@ -227,7 +227,7 @@ next_btn.addEventListener('click', function () {
         nextQueKey = ''
         next_que_id = undefined;
         for (let k = 0; k < allAbox.length; k++) {
-            if (allAbox[k].hasAttribute('selected')) {
+            if (allAbox[k].getAttribute('selected') == 'true') {
                 var oidOfSelectedOption = document.getElementById('option_' + (k + 1)).getAttribute('oid')
                 nextQueKey = nextQueKey + oidOfSelectedOption;
             }
