@@ -10,24 +10,18 @@ var ui = finalConfiguration.ui_config;
 var landing_page = ui.startscreen_configuration;
 var startscreen = landing_page.startscreen; //landing page flag
 
-var animateButton = function(e) {
-    // e.preventDefault;
-    //reset animation
-    // e.target.classList.remove('animate');
 
-    // e.target.classList.add('animate');
+//###################################################################################################################
+//#################################################### Render the Q&A page  #########################################
+//###################################################################################################################
+var animateButton = function(e) {
     setTimeout(function () {
         // e.target.classList.remove('animate');
         document.querySelector('.landing_container').parentElement.classList.add("hide");
         document.querySelector('.qna_page').classList.remove("hide");
     }, 300);
-
-
 };
 
-//###################################################################################################################
-//#################################################### Render the Q&A page  #########################################
-//###################################################################################################################
 if (startscreen) {
     document.querySelector("#survey-btn").addEventListener('click', animateButton)
 } else {

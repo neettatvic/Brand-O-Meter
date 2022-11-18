@@ -1,13 +1,12 @@
-// File containes Quesion manupulation 
+
 //###################################################################################################################
-//################################################# Refferance from Config File #####################################
+//##################################### File containes Quesion manupulation Functionality ###########################
 //###################################################################################################################
 
 var survey_config = finalConfiguration.survey_config;
 var questions = survey_config.questions; // array
 // window.next_question = questions[0].next_question;
 // console.log(next_question)
-
 
 // Refferance from ui config File
 var ui = finalConfiguration.ui_config;
@@ -19,7 +18,7 @@ var que_font_size = basic_creative_config.Question_Font_Size;
 var que_font_color = basic_creative_config.Quention_Font_Color;
 var Answer_Font_Size = basic_creative_config.Answer_Font_Size;
 var Answer_Font_Color = basic_creative_config.Answer_Font_Color;
-var Options_bg_Color = basic_creative_config.Options_bg_Color ||  rgba(231, 208, 208, 0.76);
+var Options_bg_Color = basic_creative_config.Options_bg_Color || rgba(231, 208, 208, 0.76);
 var Option_selection_bg_Color = basic_creative_config.Option_selection_bg_Color;
 var Answer_Font_Color_On_Option_selection = basic_creative_config.Answer_Font_Color_On_Option_selection;
 var Next_Btn_text = basic_creative_config.Next_Btn_text;
@@ -47,31 +46,46 @@ options_container.style.color = Answer_Font_Color
 
 // next button
 var next_btn = document.querySelector("#next-btn");
-
 next_btn.innerText = Next_Btn_text;
 next_btn.style.color = Next_Font_Color;
 next_btn.style.backgroundColor = Next_Bg_Color
-
-
 
 //next btn Click
 var nextQueKey = ''
 var next_que_id = undefined
 var que_obj_index = 0
 var final_next_que_id = 0
-//questions and option rendering 
-// for (var i = 0; i < questions.length; i++) {
-// render_quee(que_obj_index)
-// function render_quee(que_obj_index) {
-// if (i == que_obj_index) {
-// debugger
+var sortArr = [] // sorting the user selected OID 
+var responseStr = ''
+var que_type = ''
+
+//Function: shuffling the options div in UI
+function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        // Generate random number
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    return array;
+}
+
+//Object: Store user Response of option selection in object
+var responseObj = {}
+for (var i = 1; i <= questions.length; i++) {
+    responseObj[i] = null;
+    // console.log(responseObj)
+}
+console.log(responseObj)
 
 function question_render(que_obj_index) {
 
-    var que_type = questions[que_obj_index].type
+    que_type = questions[que_obj_index].type
 
     if (que_type == 'MULTIPLE_OPTION') {
         option_comment.classList.remove("hide");
+        option_comment.innerText = 'Choose all applicable'   
         next_btn.classList.remove("hide");
 
         // next_btn.disabled = true
@@ -80,7 +94,8 @@ function question_render(que_obj_index) {
         next_btn.style.cursor = "not-allowed";
     }
     else if (que_type == 'SINGLE_OPTION') {
-        option_comment.classList.add("hide");
+        // option_comment.classList.add("hide");
+        option_comment.innerText = 'Choose only one'
         next_btn.classList.add("hide");
     }
     else {
@@ -96,35 +111,40 @@ function question_render(que_obj_index) {
     if (que_type == 'SINGLE_OPTION' || que_type == 'MULTIPLE_OPTION') {
         //question div render 
         Qbox.innerText = questions[que_obj_index].text
-        console.log(questions[que_obj_index].text)
+        // console.log(questions[que_obj_index].text)
         Qbox.setAttribute('qid', questions[que_obj_index].id)
 
         //option fetching 
         var option = questions[que_obj_index].options
-        console.log(option);
+        // console.log(option);
+
 
         //fetched option populating in dom 
+        option = shuffleArray(option)
+        // console.log('option1')
+        // console.log(option1)
         for (var j = 0; j < option.length; j++) {
             var div = document.createElement('div')
             div.setAttribute('class', 'Abox')
+            div.classList.add("option_ui")
             div.setAttribute('role', option[j].role)
             div.setAttribute('oid', option[j].id)
             div.setAttribute('id', 'option_' + (j + 1))
             div.setAttribute('selected', 'false')
-            // div.setAttribute('onclick', 'optionSelection(this)')
-            // div.setAttribute('selected', true)
             div.innerText = option[j].text
             div.style.backgroundColor = Options_bg_Color
             options_container.appendChild(div)
         }
+
+
         // document.querySelector(".Abox").style.setProperty('--optionBgColor', Options_bg_Color)
         //option selection function 
         var allAbox = document.querySelectorAll('.Abox')
         for (let k = 0; k < allAbox.length; k++) {
             allAbox[k].addEventListener('click', function (e) {
                 var selected = e.target.getAttribute('selected')
-                if (selected == 'false') {                
-                    console.log("Clicked option will mark as selected true!");
+                if (selected == 'false') {
+                    // console.log("Clicked option will mark as selected true!");
                     e.target.setAttribute('selected', true)
                     e.target.style.backgroundColor = Option_selection_bg_Color;
                     e.target.style.color = Answer_Font_Color_On_Option_selection;
@@ -132,8 +152,16 @@ function question_render(que_obj_index) {
                     if (que_type == 'SINGLE_OPTION') {
                         nextQueKey = ''
                         var oidOfSelectedOption = document.getElementById('option_' + (k + 1)).getAttribute('oid')
+
                         nextQueKey = nextQueKey + oidOfSelectedOption;
-                        console.log("nextQueKey: " + nextQueKey)
+                        // console.log("nextQueKey: " + nextQueKey)
+
+                        // updating the responseObj keys value 
+                        responseObj[(que_obj_index + 1)] = nextQueKey
+                        console.log(responseObj);
+
+                        // preparing the response String 
+                        responseStrCreating(responseObj)
 
                         //remove the question text and all the options 
                         document.querySelectorAll(".Abox").forEach(e => e.remove());
@@ -143,7 +171,7 @@ function question_render(que_obj_index) {
                         next_question_iteration(que_obj_index)
                     }
                 } else {
-                    console.log("Clicked option will mark as selected false!");
+                    // console.log("Clicked option will mark as selected false!");
                     e.target.setAttribute('selected', 'false');
                     e.target.style.backgroundColor = Options_bg_Color;
                     e.target.style.color = Answer_Font_Color;
@@ -156,7 +184,7 @@ function question_render(que_obj_index) {
         nextButtonStatusUpdation()
         //question div render 
         Qbox.innerText = questions[que_obj_index].text
-        console.log(questions[que_obj_index].text)
+        // console.log(questions[que_obj_index].text)
         Qbox.setAttribute('qid', questions[que_obj_index].id)
 
         //lable info
@@ -182,16 +210,16 @@ function question_render(que_obj_index) {
     }
 }
 
-//user input validation function for next button enable-disable for input_question type only 
+//user input validation function inorder enable-disable the next button UI for input_question type only 
 function userInputValidation(obj) {
-    console.log("typed")
+    // console.log("typed")
     var inputBox = document.querySelector('.Abox')
     var inputValue = inputBox.value.length > 0;
     if (inputValue) {
-        inputBox.setAttribute('selected', true)
+        inputBox.setAttribute('selected', 'true')
         nextButtonStatusUpdation()
     } else {
-        inputBox.removeAttribute('selected');
+        inputBox.setAttribute('selected', 'false');
         nextButtonStatusUpdation()
     }
 }
@@ -206,34 +234,49 @@ question_render(que_obj_index)
 //next button enable-disable function 
 function nextButtonStatusUpdation() {
     var selectedOptionCount = document.querySelectorAll('.Abox[selected="true"]').length
-    console.log('selectedOptionCount: ' + selectedOptionCount)
+    // console.log('selectedOptionCount: ' + selectedOptionCount)
     if (selectedOptionCount > 0) {
         next_btn.disabled = false
         next_btn.style.opacity = "1";
         next_btn.style.cursor = "pointer";
         //css need to add for hover 
-    }else {
+    } else {
         next_btn.disabled = true
         next_btn.style.opacity = "0.7";
         next_btn.style.cursor = "not-allowed";
     }
 }
 
-
+// Next Button Intreaction  
 next_btn.addEventListener('click', function () {
     var selectedOptionCount = document.querySelectorAll('.Abox[selected="true"]').length
     if (selectedOptionCount > 0) {
         var allAbox = document.querySelectorAll('.Abox')
         nextQueKey = ''
         next_que_id = undefined;
+        sortArr = []
         for (let k = 0; k < allAbox.length; k++) {
             if (allAbox[k].getAttribute('selected') == 'true') {
                 var oidOfSelectedOption = document.getElementById('option_' + (k + 1)).getAttribute('oid')
-                nextQueKey = nextQueKey + oidOfSelectedOption;
+                sortArr.push(oidOfSelectedOption)
             }
         }
+        nextQueKey = sortArr.sort().join('')
+        // console.log("nextQueKey: " + nextQueKey)
     }
-    console.log("nextQueKey: " + nextQueKey)
+
+    // updating the responseObj value of key (where the key is question id)
+    if (que_type == 'INPUT_OPTION') {
+        var inputValue = document.querySelector('.input_que').value
+        responseObj[(que_obj_index + 1)] = nextQueKey + "_" + inputValue
+        console.log(responseObj);
+    }
+    else {
+        responseObj[(que_obj_index + 1)] = nextQueKey
+        console.log(responseObj);
+    }
+    // preparing the response String 
+    responseStrCreating(responseObj)
 
     //remove the question text and all the options 
     document.querySelectorAll(".Abox").forEach(e => e.remove());
@@ -248,37 +291,61 @@ next_btn.addEventListener('click', function () {
 function next_question_iteration(index) {
     //next question rendering logic
     var que_type = questions[index].type
+
     if (que_type == 'SINGLE_OPTION' || que_type == 'INPUT_OPTION') {
         var next_que_list = questions[index].next_question;
     } else {
         var next_que_list = questions[index].next_question_multiple;
     }
     // console.log(next_que_list) 
+
     for (var s = 0; s < Object.keys(next_que_list).length; s++) {
         if (Object.keys(next_que_list)[s] == nextQueKey) {
-            // console.log(s)
-            // console.log(Object.values(next_que_list)[s])
+
             next_que_id = Object.values(next_que_list)[s]
             final_next_que_id = next_que_id - 1
-            console.log(final_next_que_id)
+            // console.log(final_next_que_id)
 
             for (var i = 0; i < questions.length; i++) {
+
                 if (final_next_que_id == questions[i].id) {
                     // index = final_next_que_id
                     que_obj_index = final_next_que_id
-                    // que_obj_index = 2
-                    // console.log(questions[i].text)
                     question_render(que_obj_index)
-                    // debugger;
-                    // break;
                 } else {
+
                     if (!final_next_que_id) {
                         document.querySelector('.qna_page').classList.add("hide");
                         document.querySelector('.thanks_page').classList.remove("hide");
                         lastPageIntreaction_Tracking();
                     }
+
                 }
+
             }
         }
     }
+}
+
+
+function responseStrCreating(responseObj) {
+    var keyNameArr = Object.keys(responseObj)
+    var keyvalueArr = Object.values(responseObj)
+    var length = keyNameArr.length
+    // console.log(keyNameArr)
+    // console.log(keyvalueArr)
+    var responseStr = ''
+    for (var j = 1; j <= length; j++) {
+
+        var keyvalueStr = keyvalueArr[j - 1] != null ? keyvalueArr[j - 1] : ""
+
+        if (j < length) {
+
+            responseStr += keyNameArr[j - 1] + ":" + keyvalueStr + "|"
+        }
+        else {
+            responseStr += keyNameArr[j - 1] + ":" + keyvalueStr
+        }
+    }
+    console.log("responseStr : " + responseStr)
 }

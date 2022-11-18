@@ -1,5 +1,6 @@
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto, Cursive';
+    /* font-family: 'Open Sans', sans-serif; */
     font-size: 13px;
     margin: 0;
 }
@@ -50,12 +51,14 @@ background-color: rgb(247, 235, 235);
     cursor: pointer;
     transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
     box-shadow: 3px 8px 15px rgba(62, 62, 63, 0.5);
-    opacity: 0.9;
+    /* box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f; */
+    opacity: 1;
 }
 
 #survey-btn:hover {
-    opacity: 1;
+    /* opacity: 1; */
     color: white;
+    filter: brightness(90%);
 }
 
 .que_container,
@@ -97,17 +100,23 @@ background-color: rgb(247, 235, 235);
     padding-left: 3px;
     padding-right: 3px;
     background-color: rgba(255, 255, 255);
-    border: 2px solid rgb(216, 208, 208);
+    /* border: 2px solid rgb(216, 208, 208); */
     border-radius: 4px;
     /* height: 27px; */
     line-height: 27px;
     /* background-color: var(--optionBgColor); */
 }
+.option_ui{
+    /* transition: transform ease-in 0.1s, box-shadow ease-in 0.25s; */
+    box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
+    /* width: 99%; */
+}
 
-div.Abox:hover[selected="false"] {
+/* [selected="false"] */
+div.Abox:hover {
     cursor: pointer;
     /* background-color: rgb(190, 25, 25);  */
-    opacity: 0.8;
+    filter: brightness(85%);
     /* color: rgba(49, 99, 210); */
 }
 
@@ -142,7 +151,7 @@ div.Abox:hover[selected="false"] {
 }
 
 #next-btn:hover {
-    opacity: 0.8;
+    /* opacity: 0.8; */
     color: white;
 }
 #next-btn:after {

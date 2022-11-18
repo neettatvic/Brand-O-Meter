@@ -43,6 +43,7 @@ var finalConfiguration = {
                     "BD": "2",
                     "CD": "2",
                     "ABC": "2",
+                    "ACD": "2",
                     "ABD": "2",
                     "BCD": "2",
                     "ABCD": "3",
@@ -88,6 +89,7 @@ var finalConfiguration = {
                     "GH": "3",
                     "EFG": "3",
                     "EFH": "3",
+                    "EGH": "3",
                     "FGH": "3",
                     "EFGH": "1",
                 }
@@ -103,7 +105,7 @@ var finalConfiguration = {
                 }, {
                     "role": "option",
                     "id": "J",
-                    "text": "Italic dish"
+                    "text": "Italian dish"
                 }, {
                     "role": "option",
                     "id": "K",
@@ -111,7 +113,7 @@ var finalConfiguration = {
                 }, {
                     "role": "option2",
                     "id": "L",
-                    "text": "Desi Khichdi"
+                    "text": "Chinese dish"
                 }],
                 "next_question": {
                     "I": "4",
@@ -132,6 +134,7 @@ var finalConfiguration = {
                     "KL": "4",
                     "IJK": "4",
                     "IKL": "4",
+                    "IJL": "4",
                     "JKL": "4",
                     "IJKL": "1",
                 }
@@ -242,13 +245,13 @@ var finalConfiguration = {
         "basic_creative_config": {
             "Question_Font_Size": "16px",
             "Quention_Font_Color": "rgb(49, 99, 210)",
-            "Answer_Font_Size": "13px",
-            "Answer_Font_Color": "#545454",
-            "Options_bg_Color":"rgba(231, 208, 208, 0.76)",
-            "Options_Hover_bg_Color": "",
-            "Answer_Font_Color_On_Option_Hover":"",
-            "Option_selection_bg_Color":"rgb(49, 99, 210)",
-            "Answer_Font_Color_On_Option_selection":"black",
+            "Answer_Font_Size": "13px", 
+            "Answer_Font_Color": "#545454", //option font is dark
+            "Options_bg_Color":"rgba(231, 208, 208, 0.76)", //option bg is light
+            "Options_Hover_bg_Color": "", // not configured 
+            "Answer_Font_Color_On_Option_Hover":"", // not configured 
+            "Answer_Font_Color_On_Option_selection":"White",  //selection font is light
+            "Option_selection_bg_Color":"rgb(49, 99, 210)",  //selection bg is dark
             "Next_Btn_text": "Continue",
             "Next_Font_Color": "White",
             "Next_Bg_Color": "rgb(49, 99, 210)",
@@ -261,7 +264,7 @@ var finalConfiguration = {
         "startscreen_configuration": {
             "startscreen": true,
             "brandLogo": "https://images.assettype.com/thecue/2019-05/dac0fb2f-a261-4a22-946f-ca1c22a6cfad/logo_2_x_3x.png",
-            "startScreenText": "We would like to hear youy opinion on current call quality",
+            "startScreenText": "We would like to hear your opinion on current website behaviour",
             "startScreenTextColor": "rgb(49, 99, 210)",
             "start_cta_Bg_color": "rgba(49, 99, 210)",
             "start_cta_text": "Start Survey",
