@@ -1,7 +1,7 @@
 var finalConfiguration = {
     "survey_config": {
         "response_server": "https://asia-south1-brandometer-radiom.cloudfunctions.net/receiver?type=survey&id={survey_id}&seg={seg}&response={responses}&visual={visual_responses}&creative_size={size}&randomtimestamp={random_timestamp}&bomid={bomid}&times={time_measurement}",
-        "id": 'uuid',
+        "id": 'f3b17f26-94de-44c2-9bdc-56fbe4295c0a-uuid',
         "seg": "default",
         "questions": [
             {
@@ -272,11 +272,14 @@ var finalConfiguration = {
         },
         "lastscreen_configuration": {
             "ThankYouText": "Thank you for your time!!",
+            "ThankYouTextColor":"rgb(49, 99, 210)",
             "ThankYouLine": "",
             "couponBoxFlag": true,
             "additionalInfo": "Get 20% off on subscription",
             "couponCode": "GET20",
-            "brandLogoFlag": 'brandLogo',
+            "copybtnFontColor": "white",
+            "copybtnBgColor": "rgba(49, 99, 210)",
+            "brandLogoFlag": 'website_Link_Text',
             "website_Link": "https://www.thecue.in/?cpncode=test20",
             "brandLogo": "https://images.assettype.com/thecue/2019-05/dac0fb2f-a261-4a22-946f-ca1c22a6cfad/logo_2_x_3x.png",
             "website_Link_Text": "Redeem your code !"

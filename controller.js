@@ -12,14 +12,14 @@ var startscreen = landing_page.startscreen; //landing page flag
 
 
 //###################################################################################################################
-//#################################################### Render the Q&A page  #########################################
+//#################################################### Render the Q&A page #########################################
 //###################################################################################################################
 var animateButton = function(e) {
     setTimeout(function () {
         // e.target.classList.remove('animate');
         document.querySelector('.landing_container').parentElement.classList.add("hide");
         document.querySelector('.qna_page').classList.remove("hide");
-    }, 300);
+    }, 350);
 };
 
 if (startscreen) {
@@ -31,7 +31,7 @@ if (startscreen) {
 
 
 //###################################################################################################################
-//#################################################### Render the Thanks page  #########################################
+//################################################# Render the Thanks page  #########################################
 //###################################################################################################################
 // document.querySelector("#next-btn").addEventListener('click', function () {
 //     document.querySelector('.qna_page').classList.add("hide");

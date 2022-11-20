@@ -18,7 +18,7 @@
 
         <!-- landing page -->
         <!-- landing page will not hide that manage with js files -->
-        <div class="landing_page">
+        <div class="landing_page hide">
             <div class="landing_container">
                 <div id="logo"></div>
                 <div id="landing_content"></div>
@@ -27,7 +27,8 @@
         </div>
 
         <!-- Q&A page -->
-        <div class="qna_page hide">
+        <!-- hide -->
+        <div class="qna_page">
             <!-- que_container -->
             <div class="que_container">
                 <div class="Qbox" qid=""></div> <!-- Which Programing Language did you learn ? -->
@@ -52,12 +53,14 @@
                 <div id="thanks_text"></div>
 
                 <div class="coupon_container">
-                    <span id='offer_info' class=""><i></i></span>
+                    <span id='offer_info' class=""></span>
                     <div id="coupon_code_box" class="coupon_code invisible">
                         <input id="copyvalue" type="text" readonly value="" />
                         <button onclick="copyIt()" class="copybtn">COPY</button>
                     </div>
+                    <div id='offer_info_right' class=""><i>COPIED</i></div>
                 </div>
+
                 <div id="ending_logo"></div>
             </div>
         </div>
