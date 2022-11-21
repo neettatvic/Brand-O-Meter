@@ -378,7 +378,7 @@ function next_question_iteration(index) {
                     if (!final_next_que_id) {
                         // Record time of last response
                         this.time_measurement.question_end_time = new Date();
-                        debugger;
+                        
                         //server call 
                         console.log("responseStr : " + responseStr);
                         console.log("visualStr : " + visualStr);
