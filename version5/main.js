@@ -1,3 +1,4 @@
+// File containes Quesion manupulation Functionality and Q7A page to thanks page redirection 
 //###################################################################################################################
 //##################################### File containes Quesion manupulation Functionality ###########################
 //###################################################################################################################
@@ -24,6 +25,7 @@ var Next_Btn_text = basic_creative_config.Next_Btn_text;
 var Next_Font_Color = basic_creative_config.Next_Font_Color;
 var Next_Bg_Color = basic_creative_config.Next_Bg_Color;
 
+// for server pixel 
 var time_measurement = {
     start_time: null,
     q1_start_time: null,
@@ -61,8 +63,6 @@ var next_que_id = undefined;
 var que_obj_index = 0;
 var final_next_que_id = 0;
 var sortArr = []; // sorting the user selected OID
-var responseStr = "";
-var visualStr = "";
 var que_type = "";
 
 //Function: shuffling the options div in UI
@@ -78,46 +78,38 @@ function shuffleArray(array) {
 }
 
 //Object: Store user Response of option selection in object
+var responseStr = "";
 var responseObj = {};
 var visualObj = {};
 for (var i = 1; i <= questions.length; i++) {
     responseObj[i] = null;
     visualObj[i] = null;
-    // console.log(responseObj)
 }
-console.log(responseObj);
-console.log(visualObj);
+// console.log(responseObj);
+// console.log(visualObj);
 
-
-
+// for visual string 
 var alphabets = ['A', 'B', 'C', 'D', 'E']
-var option_id = ''
-var option_index = ''
-var visual_response = ''
-var visual_str = ''
+var option_id,option_index,visual_response,visualStr,visual_value = "";
 function visualObj(visual_response) {
-    visual_str = ''
-    // var selected_options = document.querySelectorAll("#ad_box > div.qna_page > div.options_container .Abox.option_ui[selected=true]");
-    // selected_options.forEach(function(option){
+    visual_value = ''
     option_id = option.getAttribute('ID');
     option_index = option_id.split('_')[1];
     visual_response = alphabets[option_index - 1]
-    visual_str += visual_response
-    // })
-    console.log(visual_str);
+    visual_value += visual_response
+    console.log(visual_value);
 }
 
+//Function: question_render for q&a manipulation 
 function question_render(que_obj_index) {
     que_type = questions[que_obj_index].type;
-
 
 
     if (que_type == "MULTIPLE_OPTION") {
         option_comment.classList.remove("hide");
         option_comment.innerText = "Choose all applicable";
         next_btn.classList.remove("hide");
-
-        // next_btn.disabled = true
+        
         next_btn.style.opacity = "0.7";
         next_btn.disabled = true;
         next_btn.style.cursor = "not-allowed";
@@ -133,6 +125,7 @@ function question_render(que_obj_index) {
         next_btn.style.cursor = "not-allowed";
         option_comment.classList.add("hide");
     }
+
 
     if (que_type == "SINGLE_OPTION" || que_type == "MULTIPLE_OPTION") {
         //question div render
@@ -179,7 +172,7 @@ function question_render(que_obj_index) {
                     nextButtonStatusUpdation();
                     if (que_type == "SINGLE_OPTION") {
                         nextQueKey = "";
-                        visual_str = "";
+                        visual_value = "";
 
                         responseStr = "";
                         visualStr = "";
@@ -187,13 +180,13 @@ function question_render(que_obj_index) {
                         nextQueKey = nextQueKey + oidOfSelectedOption;
                         // console.log("nextQueKey: " + nextQueKey)
                         visual_response = alphabets[k];
-                        visual_str += visual_response;
+                        visual_value += visual_response;
 
                         // updating the responseObj keys value
                         responseObj[que_obj_index + 1] = nextQueKey;
                         console.log(responseObj);
                         // updating the visualObj keys value
-                        visualObj[que_obj_index + 1] = visual_str;
+                        visualObj[que_obj_index + 1] = visual_value;
                         console.log(visualObj);
 
                         // preparing the response String
@@ -219,22 +212,21 @@ function question_render(que_obj_index) {
         }
     } else {
         nextButtonStatusUpdation();
+
         //question div render
         Qbox.innerText = questions[que_obj_index].text;
-        // console.log(questions[que_obj_index].text)
         Qbox.setAttribute("qid", questions[que_obj_index].id);
+
         // Record time of first response
         if (questions[que_obj_index].id == 0) {
             this.time_measurement.q1_start_time = new Date();
         }
 
-        //lable info
+        //lable info from config file 
         var lableText = questions[que_obj_index].label;
         var lableID = questions[que_obj_index].label_id;
 
         //populate the input html
-        // options_container.appendChild(div)
-
         options_container.innerHTML = `
         <div class="container_lable">
             <div class="group">                    
@@ -244,12 +236,9 @@ function question_render(que_obj_index) {
                 <label class="label">${lableText}</label>                
             </div>
         </div>`;
-        document
-            .querySelector(".bar")
-            .style.setProperty("--inputBoxBar", que_font_color);
-        document
-            .querySelector(".label")
-            .style.setProperty("--inputBoxBar", que_font_color);
+
+        document.querySelector(".bar").style.setProperty("--inputBoxBar", que_font_color);
+        document.querySelector(".label").style.setProperty("--inputBoxBar", que_font_color);
         // document.querySelector(".input").style.setProperty('--inputBoxBar', que_font_color)
     }
 }
@@ -271,13 +260,9 @@ function userInputValidation(obj) {
 //que_render function call for first question
 question_render(que_obj_index);
 
-// debugger
-
 //next button enable-disable function
 function nextButtonStatusUpdation() {
-    var selectedOptionCount = document.querySelectorAll(
-        '.Abox[selected="true"]'
-    ).length;
+    var selectedOptionCount = document.querySelectorAll('.Abox[selected="true"]').length;
     // console.log('selectedOptionCount: ' + selectedOptionCount)
     if (selectedOptionCount > 0) {
         next_btn.disabled = false;
@@ -293,15 +278,10 @@ function nextButtonStatusUpdation() {
 
 // Next Button Intreaction
 next_btn.addEventListener("click", function () {
-    var selectedOptionCount = document.querySelectorAll(
-        '.Abox[selected="true"]'
-    ).length;
+    var selectedOptionCount = document.querySelectorAll('.Abox[selected="true"]').length;
     if (selectedOptionCount > 0) {
         var allAbox = document.querySelectorAll(".Abox");
-        nextQueKey = "";
-        visual_str = '';
-        responseStr = "";
-        visualStr = "";
+        nextQueKey,visual_value,responseStr,visualStr = "";
         next_que_id = undefined;
         sortArr = [];
         for (let k = 0; k < allAbox.length; k++) {
@@ -309,11 +289,11 @@ next_btn.addEventListener("click", function () {
                 var oidOfSelectedOption = document.getElementById("option_" + (k + 1)).getAttribute("oid");
 
                 visual_response = alphabets[k];
-                visual_str += visual_response;
+                visual_value += visual_response;
                 sortArr.push(oidOfSelectedOption);
             }
         }
-        console.log('visual_str: ' + visual_str);
+        console.log('visual_value: ' + visual_value);
         nextQueKey = sortArr.sort().join("");
         // console.log("nextQueKey: " + nextQueKey)
     }
@@ -322,20 +302,19 @@ next_btn.addEventListener("click", function () {
     // updating the responseObj & visualObj value of key (where the key is question id)
     if (que_type == "INPUT_OPTION") {
         var inputValue = document.querySelector(".input_que").value;
-        responseObj[que_obj_index + 1] = nextQueKey + "_" + inputValue;
+        responseObj[que_obj_index + 1] = inputValue;
         console.log(responseObj);
-        visualObj[que_obj_index + 1] = visual_str + "_" + inputValue;
+        visualObj[que_obj_index + 1] = inputValue;
         console.log(responseObj);
     } else {
         responseObj[que_obj_index + 1] = nextQueKey;
-        visualObj[que_obj_index + 1] = visual_str;
+        visualObj[que_obj_index + 1] = visual_value;
         console.log(responseObj);
         console.log(visualObj);
 
     }
-    // preparing the response String
+    // preparing the response String & visual String 
     responseStrCreating(responseObj);
-    // preparing the visual String 
     visualStrCreating(visualObj);
 
 
@@ -378,7 +357,7 @@ function next_question_iteration(index) {
                     if (!final_next_que_id) {
                         // Record time of last response
                         this.time_measurement.question_end_time = new Date();
-                        
+
                         //server call 
                         console.log("responseStr : " + responseStr);
                         console.log("visualStr : " + visualStr);
@@ -400,8 +379,6 @@ function responseStrCreating(responseObj) {
     var keyNameArr = Object.keys(responseObj);
     var keyvalueArr = Object.values(responseObj);
     var length = keyNameArr.length;
-    // console.log(keyNameArr)
-    // console.log(keyvalueArr)
     responseStr = "";
     for (var j = 1; j <= length; j++) {
         var keyvalueStr = keyvalueArr[j - 1] != null ? keyvalueArr[j - 1] : "";
@@ -418,7 +395,6 @@ function visualStrCreating(visualObj) {
     var keyNameArr = Object.keys(visualObj);
     var keyvalueArr = Object.values(visualObj);
     var length = keyNameArr.length;
-
     visualStr = "";
     for (var j = 1; j <= length; j++) {
         var keyvalueStr = keyvalueArr[j - 1] != null ? keyvalueArr[j - 1] : "";

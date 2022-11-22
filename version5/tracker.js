@@ -21,15 +21,11 @@ var landing_page = ui.startscreen_configuration;
 var start_cta_Bg_color = landing_page.start_cta_Bg_color || null;
 
 
-console.log("survey_config.id : " + survey_config.id)
-console.log("survey_config.seg : " + survey_config.seg)
-console.log("survey_config.response_server : " + survey_config.response_server)
-console.log("ui.creative_size.width : " + ui.creative_size.width)
-console.log("ui.creative_size.height : " + ui.creative_size.height)
-
-
-
-
+// console.log("survey_config.id : " + survey_config.id)
+// console.log("survey_config.seg : " + survey_config.seg)
+// console.log("survey_config.response_server : " + survey_config.response_server)
+// console.log("ui.creative_size.width : " + ui.creative_size.width)
+// console.log("ui.creative_size.height : " + ui.creative_size.height)
 
 //###################################################################################################################
 //#################################################### tracker set up code ##########################################
