@@ -11,8 +11,7 @@ var trackers_thanks_intreaction = survey_config.trackers;
 var trackers_thanks_intreaction_flag = true;
 var property_id = survey_config.Gtag_Details[0].Property_id;
 var pageview_domain = survey_config.Gtag_Details[0].Domain;
-console.log("pageview_domain: " + pageview_domain)
-console.log("Property_id: " + property_id)
+
 
 
 // Refferance from ui config File
@@ -102,7 +101,7 @@ function getOrGenerateCookieId() {
 function setCookieId() {
     var cookieId = this.uuidv4();
     document.cookie = 'bomu=' + cookieId + ';samesite=none;secure;';
-    console.log(document.cookie)
+    // console.log(document.cookie)
     return cookieId;
 }
 
@@ -177,12 +176,12 @@ setupGlobalTags()
 //################################################ creativeLoad pixel tracking  #####################################
 //###################################################################################################################
 function creativeLoad_Tracking() {
-    console.log('doc ready')
+    // console.log('doc ready')
     // debugger;
     if ((trackers_creative_load) && (trackers_creative_load.length > 0) && (document.querySelector('.thankyou_container').parentElement.className.match("hide"))) {
         insertScript(`gtag('event', 'page_view', { page_title: 'Home Page', page_location: '${pageview_domain}/vp/creativeLoad'});`, null, 'head');
         trackers_creative_load.forEach(function (src) {
-            console.log('inserting creativeLoad GA event');
+            // console.log('inserting creativeLoad GA event');
             insert_pixel(src, false)
         })
     }
@@ -200,7 +199,7 @@ function firstInteraction_Tracking() {
             insertScript(`gtag('event', 'page_view', { page_title: 'Home Page', page_location: '${pageview_domain}/vp/firstInteraction'});`, null, 'head');
             if (trackers_first_interaction_flag) {
                 trackers_first_interaction.forEach(function (src) {
-                    console.log('inserting firstInteraction GA event start screen');
+                    // console.log('inserting firstInteraction GA event start screen');
                     insert_pixel(src, false)
 
                     // Measure render time
@@ -216,7 +215,7 @@ function firstInteraction_Tracking() {
             if (trackers_first_interaction_flag) {
                 insertScript(`gtag('event', 'page_view', { page_title: 'Q&A Page', page_location: '${pageview_domain}/vp/firstInteraction'});`, null, 'head');
                 trackers_first_interaction.forEach(function (src) {
-                    console.log('inserting firstInteraction GA event QnA page');
+                    // console.log('inserting firstInteraction GA event QnA page');
                     insert_pixel(src, false)
 
                     // Measure render time
@@ -238,7 +237,7 @@ function lastPageIntreaction_Tracking() {
         if (!thanks_page_visiblity) {
             insertScript(`gtag('event', 'page_view', { page_title: 'Thank You Page', page_location: '${pageview_domain}/vp/lastPageIntreaction'});`, null, 'head');
             trackers_thanks_intreaction.forEach(function (src) {
-                console.log('inserting lastPageIntreaction GA event');
+                // console.log('inserting lastPageIntreaction GA event');
                 insert_pixel(src, false)
             })
             trackers_thanks_intreaction_flag = false;

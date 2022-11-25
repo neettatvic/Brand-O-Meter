@@ -187,15 +187,15 @@ function question_render(que_obj_index) {
 
                         // updating the responseObj keys value
                         responseObj[que_obj_index + 1] = nextQueKey;
-                        console.log(responseObj);
+                        // console.log(responseObj);
                         // updating the visualObj keys value
                         visualObj[que_obj_index + 1] = visual_value;
-                        console.log(visualObj);
+                        // console.log(visualObj);
 
                         // preparing the response String
                         responseStrCreating(responseObj);
                         // preparing the visual String 
-                        console.log(visualObj)
+                        // console.log(visualObj)
                         visualStrCreating(visualObj);
 
                         //remove the question text and all the options
@@ -301,7 +301,7 @@ next_btn.addEventListener("click", function () {
                 sortArr.push(oidOfSelectedOption);
             }
         }
-        console.log('visual_value: ' + visual_value);
+        // console.log('visual_value: ' + visual_value);
         nextQueKey = sortArr.sort().join("");
         // console.log("nextQueKey: " + nextQueKey)
     }
@@ -311,14 +311,14 @@ next_btn.addEventListener("click", function () {
     if (que_type == "INPUT_OPTION") {
         var inputValue = document.querySelector(".input_que").value;
         responseObj[que_obj_index + 1] = inputValue;
-        console.log(responseObj);
+        // console.log(responseObj);
         visualObj[que_obj_index + 1] = inputValue;
-        console.log(responseObj);
+        // console.log(responseObj);
     } else {
         responseObj[que_obj_index + 1] = nextQueKey;
         visualObj[que_obj_index + 1] = visual_value;
-        console.log(responseObj);
-        console.log(visualObj);
+        // console.log(responseObj);
+        // console.log(visualObj);
 
     }
     // preparing the response String & visual String 
@@ -352,8 +352,8 @@ function next_question_iteration(index) {
             if (final_next_que_id == questions[i].id) {
 
                 //server call 
-                console.log("responseStr : " + responseStr);
-                console.log("visualStr : " + visualStr);
+                // console.log("responseStr : " + responseStr);
+                // console.log("visualStr : " + visualStr);
                 sendCollectedResponseToServer(responseStr, visualStr)
 
                 que_obj_index = final_next_que_id;
@@ -364,8 +364,8 @@ function next_question_iteration(index) {
                     this.time_measurement.question_end_time = new Date();
 
                     //server call 
-                    console.log("responseStr : " + responseStr);
-                    console.log("visualStr : " + visualStr);
+                    // console.log("responseStr : " + responseStr);
+                    // console.log("visualStr : " + visualStr);
                     sendCollectedResponseToServer(responseStr, visualStr);
 
                     // redirect to thanks page
@@ -391,8 +391,8 @@ function next_question_iteration(index) {
                 if (final_next_que_id == questions[i].id) {
 
                     //server call 
-                    console.log("responseStr : " + responseStr);
-                    console.log("visualStr : " + visualStr);
+                    // console.log("responseStr : " + responseStr);
+                    // console.log("visualStr : " + visualStr);
                     sendCollectedResponseToServer(responseStr, visualStr)
 
                     que_obj_index = final_next_que_id;
@@ -403,8 +403,8 @@ function next_question_iteration(index) {
                         this.time_measurement.question_end_time = new Date();
 
                         //server call 
-                        console.log("responseStr : " + responseStr);
-                        console.log("visualStr : " + visualStr);
+                        // console.log("responseStr : " + responseStr);
+                        // console.log("visualStr : " + visualStr);
                         sendCollectedResponseToServer(responseStr, visualStr);
 
                         document.querySelector(".qna_page").classList.add("hide");

@@ -1576,9 +1576,9 @@ var finalConfiguration = {
         "exit_url": "https://www.google.com",
         "carousel_images": [],
         "thankyou_text": "Next",
-        "trackers": ["https://www.googly.com", "https://www.googly.com"],
-        "trackers_first_interaction": ["https://www.googly.com", "https://www.googly.com"],
-        "trackers_creative_load": ["https://www.googly.com", "https://www.googly.com"],
+        "trackers": ["https://www.googlyend.com", "https://www.googlyend.com"],
+        "trackers_first_interaction": ["https://www.googly_trackers_first_interaction.com", "https://www.googly_trackers_first_interaction.com"],
+        "trackers_creative_load": ["https://www.googly_trackers_creative_load.com", "https://www.googly_trackers_creative_load.com"],
         "Gtag_Details": [{
             "Property_id": "UA-1234567-8",
             "Domain": "www.domain.com"
@@ -1620,12 +1620,12 @@ var finalConfiguration = {
         "lastscreen_configuration": {
             "ThankYouText": "Thank You for your time! ",
             "ThankYouLine": "",
-            "couponBoxFlag": true,
+            "couponBoxFlag": false,
             "additionalInfo": "Get 40% off on subscription",
             "couponCode": "40OFF",
-            "brandLogoFlag": "website_Link_Text",
+            "brandLogoFlag": "brandLogo",
             "website_Link": "https://apps.apple.com/in/app/the-times-of-india/id427589329",
-            "brandLogo": "",
+            "brandLogo": "https://is4-ssl.mzstatic.com/image/thumb/Purple122/v4/d0/fc/29/d0fc2926-bcf8-88f4-285f-f852265aa9b7/AppIcon-0-0-1x_U007emarketing-0-0-0-10-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/230x0w.webp",
             "website_Link_Text": "Download TOI APP ",
             "ThankYouTextColor": "#741b47",
             "copybtnFontColor": "#741b47",
