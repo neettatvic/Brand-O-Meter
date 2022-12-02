@@ -289,7 +289,7 @@ var finalConfiguration = {
             "Domain": "www.domain.com"
         }, {
             "Property_id": "UA-1234567-9",
-            "Domain": "www.domain.com"
+            "Domain": "www.domain1.com"
         }]
     },
     "ui_config": {
