@@ -9,9 +9,22 @@ var trackers_first_interaction = survey_config.trackers_first_interaction;
 var trackers_first_interaction_flag = true;
 var trackers_thanks_intreaction = survey_config.trackers;
 var trackers_thanks_intreaction_flag = true;
-var property_id = survey_config.Gtag_Details[0].Property_id;
-var pageview_domain = survey_config.Gtag_Details[0].Domain;
+var property_id_array = []
+// var property_id = survey_config.Gtag_Details[0].Property_id;
+// var pageview_domain = survey_config.Gtag_Details[0].Domain;
 
+
+//GA event on creative load 
+var global_tags_creative_load = survey_config.global_tags_creative_load
+// console.log(global_tags_creative_load.length)
+
+//GA event on first interaction 
+var global_tags_first_interaction = survey_config.global_tags_first_interaction
+// console.log(global_tags_first_interaction.length)
+
+//GA event on thanks you page 
+var global_tags = survey_config.global_tags
+// console.log(global_tags.length)
 
 
 // Refferance from ui config File
@@ -145,7 +158,7 @@ function insertScript(scriptString, srcString, position) {
     }
 }
 
-function setupGlobalTags() {
+function setupGlobalTags(property_id) {
     // if (this.surveyConfig.global_tags != null && this.surveyConfig.global_tags.length > 0) {
     // Insert master tag
     this.insertScript(
@@ -161,7 +174,7 @@ function setupGlobalTags() {
     // }
 }
 
-setupGlobalTags()
+// setupGlobalTags()
 
 // function fireGlobalTagsEvents() {
 //     if (this.surveyConfig.global_tags != null &&
@@ -179,7 +192,19 @@ function creativeLoad_Tracking() {
     // console.log('doc ready')
     // debugger;
     if ((trackers_creative_load) && (trackers_creative_load.length > 0) && (document.querySelector('.thankyou_container').parentElement.className.match("hide"))) {
-        insertScript(`gtag('event', 'page_view', { page_title: 'Home Page', page_location: '${pageview_domain}/vp/creativeLoad'});`, null, 'head');
+        if (global_tags_creative_load.length > 0 && global_tags_creative_load != null) {
+            for (var i = 0; i < global_tags_creative_load.length; i++) {
+                var pageview_domain = global_tags_creative_load[i].Domain
+                var property_id = global_tags_creative_load[i].Property_id
+                // console.log(i + ": " + pageview_domain)
+                // console.log(i +": "+ property_id)
+                if (!property_id_array.includes(property_id)) {
+                    setupGlobalTags(property_id)
+                    property_id_array.push(property_id)
+                }
+                insertScript(`gtag('event', 'page_view', { page_title: 'Home Page', page_location: '${pageview_domain}/vp/creativeLoad'});`, null, 'head');
+            }
+        }
         trackers_creative_load.forEach(function (src) {
             // console.log('inserting creativeLoad GA event');
             insert_pixel(src, false)
@@ -195,8 +220,21 @@ function firstInteraction_Tracking() {
     // first_interaction pixel tracking in landing page 
     if (trackers_first_interaction_flag && landing_page.startscreen) {
         document.querySelector("#survey-btn").addEventListener('click', function () {
-            // debugger
-            insertScript(`gtag('event', 'page_view', { page_title: 'Home Page', page_location: '${pageview_domain}/vp/firstInteraction'});`, null, 'head');
+            //fire the GA event 
+            if (global_tags_first_interaction.length > 0 && global_tags_first_interaction != null) {
+                for (var i = 0; i < global_tags_first_interaction.length; i++) {
+                    var pageview_domain = global_tags_first_interaction[i].Domain
+                    var property_id = global_tags_first_interaction[i].Property_id
+                    // console.log(i +": "+ property_id)
+                    // console.log(i +": "+ pageview_domain)
+                    if (!property_id_array.includes(property_id)) {
+                        setupGlobalTags(property_id)
+                        property_id_array.push(property_id)
+                    }
+                    insertScript(`gtag('event', 'page_view', { page_title: 'Home Page', page_location: '${pageview_domain}${i}/vp/firstInteraction'});`, null, 'head');
+                }
+            }
+            // fire the server pixel
             if (trackers_first_interaction_flag) {
                 trackers_first_interaction.forEach(function (src) {
                     // console.log('inserting firstInteraction GA event start screen');
@@ -213,7 +251,19 @@ function firstInteraction_Tracking() {
     if (trackers_first_interaction_flag && landing_page.startscreen == false) {
         document.body.addEventListener('click', function () {
             if (trackers_first_interaction_flag) {
-                insertScript(`gtag('event', 'page_view', { page_title: 'Q&A Page', page_location: '${pageview_domain}/vp/firstInteraction'});`, null, 'head');
+                if (global_tags_first_interaction.length > 0 && global_tags_first_interaction != null) {
+                    for (var i = 0; i < global_tags_first_interaction.length; i++) {
+                        var pageview_domain = global_tags_first_interaction[i].Domain
+                        var property_id = global_tags_first_interaction[i].Property_id
+                        // console.log(i + ": " + property_id)
+                        // console.log(i + ": " + pageview_domain)
+                        if (!property_id_array.includes(property_id)) {
+                            setupGlobalTags(property_id)
+                            property_id_array.push(property_id)
+                        }
+                        insertScript(`gtag('event', 'page_view', { page_title: 'Q&A Page', page_location: '${pageview_domain}/vp/firstInteraction'});`, null, 'head');
+                    }
+                }
                 trackers_first_interaction.forEach(function (src) {
                     // console.log('inserting firstInteraction GA event QnA page');
                     insert_pixel(src, false)
@@ -235,7 +285,19 @@ function lastPageIntreaction_Tracking() {
         // debugger;
         var thanks_page_visiblity = document.querySelector('.thankyou_container').parentElement.className.match("hide")
         if (!thanks_page_visiblity) {
-            insertScript(`gtag('event', 'page_view', { page_title: 'Thank You Page', page_location: '${pageview_domain}/vp/lastPageIntreaction'});`, null, 'head');
+            if (global_tags.length > 0 && global_tags != null) {
+                for (var i = 0; i < global_tags.length; i++) {
+                    var pageview_domain = global_tags[i].Domain
+                    var property_id = global_tags[i].Property_id
+                    // console.log(i + ": " + property_id)
+                    // console.log(i + ": " + pageview_domain)
+                    if (!property_id_array.includes(property_id)) {
+                        setupGlobalTags(property_id)
+                        property_id_array.push(property_id)
+                    }
+                    insertScript(`gtag('event', 'page_view', { page_title: 'Thank You Page', page_location: '${pageview_domain}/vp/lastPageIntreaction'});`, null, 'head');
+                }
+            }
             trackers_thanks_intreaction.forEach(function (src) {
                 // console.log('inserting lastPageIntreaction GA event');
                 insert_pixel(src, false)
