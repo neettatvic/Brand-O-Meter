@@ -190,19 +190,21 @@ function setupGlobalTags(property_id) {
 //###################################################################################################################
 function creativeLoad_Tracking() {
     // console.log('doc ready')
-    // debugger;
     if ((trackers_creative_load) && (trackers_creative_load.length > 0) && (document.querySelector('.thankyou_container').parentElement.className.match("hide"))) {
         if (global_tags_creative_load.length > 0 && global_tags_creative_load != null) {
             for (var i = 0; i < global_tags_creative_load.length; i++) {
                 var pageview_domain = global_tags_creative_load[i].Domain
+                var pageview_url = pageview_domain + '/vp/creativeLoad';
                 var property_id = global_tags_creative_load[i].Property_id
                 // console.log(i + ": " + pageview_domain)
                 // console.log(i +": "+ property_id)
+                // debugger
                 if (!property_id_array.includes(property_id)) {
                     setupGlobalTags(property_id)
                     property_id_array.push(property_id)
                 }
-                insertScript(`gtag('event', 'page_view', { page_title: 'Home Page', page_location: '${pageview_domain}/vp/creativeLoad'});`, null, 'head');
+                // insertScript(`gtag('event', 'page_view', { page_title: 'Home Page', page_location: '${pageview_domain}/vp/creativeLoad'});`, null, 'head');
+                insertScript(`gtag('event', 'page_view', { page_title: 'Home Page', page_location: '${pageview_url}' , send_to: '${property_id}'});`, null, 'head');
             }
         }
         trackers_creative_load.forEach(function (src) {
@@ -224,6 +226,7 @@ function firstInteraction_Tracking() {
             if (global_tags_first_interaction.length > 0 && global_tags_first_interaction != null) {
                 for (var i = 0; i < global_tags_first_interaction.length; i++) {
                     var pageview_domain = global_tags_first_interaction[i].Domain
+                    var pageview_url = pageview_domain + '/vp/creativeLoad';
                     var property_id = global_tags_first_interaction[i].Property_id
                     // console.log(i +": "+ property_id)
                     // console.log(i +": "+ pageview_domain)
@@ -231,7 +234,8 @@ function firstInteraction_Tracking() {
                         setupGlobalTags(property_id)
                         property_id_array.push(property_id)
                     }
-                    insertScript(`gtag('event', 'page_view', { page_title: 'Home Page', page_location: '${pageview_domain}${i}/vp/firstInteraction'});`, null, 'head');
+                    // insertScript(`gtag('event', 'page_view', { page_title: 'Home Page', page_location: '${pageview_domain}${i}/vp/firstInteraction'});`, null, 'head');
+                    insertScript(`gtag('event', 'page_view', { page_title: 'Home Page', page_location: '${pageview_url}' , send_to: '${property_id}'});`, null, 'head');
                 }
             }
             // fire the server pixel
@@ -255,13 +259,17 @@ function firstInteraction_Tracking() {
                     for (var i = 0; i < global_tags_first_interaction.length; i++) {
                         var pageview_domain = global_tags_first_interaction[i].Domain
                         var property_id = global_tags_first_interaction[i].Property_id
+                        var pageview_url = pageview_domain + '/vp/creativeLoad';
+
                         // console.log(i + ": " + property_id)
                         // console.log(i + ": " + pageview_domain)
                         if (!property_id_array.includes(property_id)) {
                             setupGlobalTags(property_id)
                             property_id_array.push(property_id)
                         }
-                        insertScript(`gtag('event', 'page_view', { page_title: 'Q&A Page', page_location: '${pageview_domain}/vp/firstInteraction'});`, null, 'head');
+                        // insertScript(`gtag('event', 'page_view', { page_title: 'Q&A Page', page_location: '${pageview_domain}/vp/firstInteraction'});`, null, 'head');
+                        insertScript(`gtag('event', 'page_view', { page_title: 'Home Page', page_location: '${pageview_url}' , send_to: '${property_id}'});`, null, 'head');
+
                     }
                 }
                 trackers_first_interaction.forEach(function (src) {
@@ -289,13 +297,17 @@ function lastPageIntreaction_Tracking() {
                 for (var i = 0; i < global_tags.length; i++) {
                     var pageview_domain = global_tags[i].Domain
                     var property_id = global_tags[i].Property_id
+                    var pageview_url = pageview_domain + '/vp/creativeLoad';
+
                     // console.log(i + ": " + property_id)
                     // console.log(i + ": " + pageview_domain)
                     if (!property_id_array.includes(property_id)) {
                         setupGlobalTags(property_id)
                         property_id_array.push(property_id)
                     }
-                    insertScript(`gtag('event', 'page_view', { page_title: 'Thank You Page', page_location: '${pageview_domain}/vp/lastPageIntreaction'});`, null, 'head');
+                    // insertScript(`gtag('event', 'page_view', { page_title: 'Thank You Page', page_location: '${pageview_domain}/vp/lastPageIntreaction'});`, null, 'head');
+                    insertScript(`gtag('event', 'page_view', { page_title: 'Home Page', page_location: '${pageview_url}' , send_to: '${property_id}'});`, null, 'head');
+
                 }
             }
             trackers_thanks_intreaction.forEach(function (src) {
