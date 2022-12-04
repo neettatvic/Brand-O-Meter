@@ -226,7 +226,7 @@ function firstInteraction_Tracking() {
             if (global_tags_first_interaction.length > 0 && global_tags_first_interaction != null) {
                 for (var i = 0; i < global_tags_first_interaction.length; i++) {
                     var pageview_domain = global_tags_first_interaction[i].Domain
-                    var pageview_url = pageview_domain + '/vp/creativeLoad';
+                    var pageview_url = pageview_domain + '/vp/firstInteraction';
                     var property_id = global_tags_first_interaction[i].Property_id
                     // console.log(i +": "+ property_id)
                     // console.log(i +": "+ pageview_domain)
@@ -259,7 +259,7 @@ function firstInteraction_Tracking() {
                     for (var i = 0; i < global_tags_first_interaction.length; i++) {
                         var pageview_domain = global_tags_first_interaction[i].Domain
                         var property_id = global_tags_first_interaction[i].Property_id
-                        var pageview_url = pageview_domain + '/vp/creativeLoad';
+                        var pageview_url = pageview_domain + '/vp/firstInteraction';
 
                         // console.log(i + ": " + property_id)
                         // console.log(i + ": " + pageview_domain)
@@ -297,7 +297,7 @@ function lastPageIntreaction_Tracking() {
                 for (var i = 0; i < global_tags.length; i++) {
                     var pageview_domain = global_tags[i].Domain
                     var property_id = global_tags[i].Property_id
-                    var pageview_url = pageview_domain + '/vp/creativeLoad';
+                    var pageview_url = pageview_domain + '/vp/lastPageIntreaction';
 
                     // console.log(i + ": " + property_id)
                     // console.log(i + ": " + pageview_domain)
