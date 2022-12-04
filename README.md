@@ -34,10 +34,10 @@ In creative, there are three different page types. Details for each are provided
 - Sequential rationalist questioning based on user reaction.
 - Options are being shuffled for Checking the randomization of the choices on the user interface.
 
-Type of Questions:
-- Questions with single choice answers
-- Questions with multiple choice answers
-- Questions with input type answers 
+- Type of Questions:
+1. Questions with single choice answers
+2. Questions with multiple choice answers
+3. Questions with input type answers 
 
 ![image](https://user-images.githubusercontent.com/101398238/205506749-4f5a2fce-3c9a-4d1f-9057-9844d415a9cc.png)  ![image](https://user-images.githubusercontent.com/101398238/205506808-3baf260d-0695-4044-a0c0-ae3197258cc4.png)  ![image](https://user-images.githubusercontent.com/101398238/205506874-d6bda59d-cda3-4b30-843e-48d562607b08.png)
 
@@ -54,14 +54,10 @@ Type of Questions:
 # Tracking on Brand-O-Meter
 
 ## Response Pixel Implementation on Q&A page collects below user actions:	
-- Collect User option visual string 
--   (Eg. 1:B|2:CD|3:B|4:B|5:|6:BC|7:A|8:D|9:test@gmail.com)
-- Collect User option response string 
--   (Eg. 1:A|2:CF|3:G|4:J|5:|6:PR|7:T|8:X|9:test@gmail.com)
-- Collect User interaction start-end time in Millisecond 
--   (Eg. 1670169837172|1670169853952)
-- Collect  the user BOMID (Browser object Model Identity) 
--   (Eg. f8190aee-3794-41ca-9297-a83a201ad4d6)
+- Collect User option visual string (Eg. 1:B|2:CD|3:B|4:B|5:|6:BC|7:A|8:D|9:test@gmail.com)
+- Collect User option response string (Eg. 1:A|2:CF|3:G|4:J|5:|6:PR|7:T|8:X|9:test@gmail.com)
+- Collect User interaction start-end time in Millisecond (Eg. 1670169837172|1670169853952)
+- Collect  the user BOMID (Browser object Model Identity) (Eg. f8190aee-3794-41ca-9297-a83a201ad4d6)
 
 ## Page Visual pixel implementation for user segmentation:
 The main purpose of completing the survey is to expand the campaign's audience and run it page-by-page.
