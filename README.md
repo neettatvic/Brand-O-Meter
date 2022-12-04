@@ -26,15 +26,20 @@ Main Brand logo on top side
 Main Land page text line 
 Start Survey Button
 
+![image](https://user-images.githubusercontent.com/101398238/205506663-bab4b474-1b60-45b9-975e-1310adcab05c.png)
+
+
 ## 2) Q&A Page
 
-Sequential rationalist questioning based on user reaction
-Options are being shuffled for Checking the randomization of the choices on the user interface
+Sequential rationalist questioning based on user reaction.
+Options are being shuffled for Checking the randomization of the choices on the user interface.
 
 Type of Questions:
 Questions with single choice answers
 Questions with multiple choice answers
 Questions with input type answers 
+
+![image](https://user-images.githubusercontent.com/101398238/205506749-4f5a2fce-3c9a-4d1f-9057-9844d415a9cc.png)  ![image](https://user-images.githubusercontent.com/101398238/205506808-3baf260d-0695-4044-a0c0-ae3197258cc4.png)  ![image](https://user-images.githubusercontent.com/101398238/205506874-d6bda59d-cda3-4b30-843e-48d562607b08.png)
 
 ## 3) Thanks Page
 
