@@ -55,7 +55,7 @@ In creative, there are three different page types. Details for each are provided
 
 ## Response Pixel Implementation on Q&A page collects below user actions:	
 - Collect User option visual string (Eg. 1:B|2:CD|3:B|4:B|5:|6:BC|7:A|8:D|9:test@gmail.com)
-- Collect User option response string (Eg. 1:A|2:CF|3:G|4:J|5:|6:PR|7:T|8:X|9:test@gmail.com)
+- Collect User answer response string (Eg. 1:A|2:CF|3:G|4:J|5:|6:PR|7:T|8:X|9:test@gmail.com)
 - Collect User interaction start-end time in Millisecond (Eg. 1670169837172|1670169853952)
 - Collect  the user BOMID (Browser object Model Identity) (Eg. f8190aee-3794-41ca-9297-a83a201ad4d6)
 
