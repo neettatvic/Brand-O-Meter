@@ -233,7 +233,7 @@ var finalConfiguration = {
             "background_image": "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
         },
         "startscreen_configuration": {
-            "startscreen": false,
+            "startscreen": true,
             "brandLogo": "https://images.assettype.com/thecue/2019-05/dac0fb2f-a261-4a22-946f-ca1c22a6cfad/logo_2_x_3x.png",
             "startScreenText": "We would like to hear your opinion on current website behaviour",
             "startScreenTextColor": "rgb(49, 99, 210)",
@@ -250,9 +250,9 @@ var finalConfiguration = {
             "couponCode": "GET20",
             "copybtnFontColor": "white",
             "copybtnBgColor": "rgba(49, 99, 210)",
-            "brandLogoFlag": 'brandLogo',
+            "brandLogoFlag": 'website_Link_Text',
             "website_Link": "https://www.thecue.in/?cpncode=test20",
-            "brandLogo": "",
+            "brandLogo": "https://images.assettype.com/thecue/2019-05/dac0fb2f-a261-4a22-946f-ca1c22a6cfad/logo_2_x_3x.png",
             "website_Link_Text": "Redeem your code !"
         }
     }

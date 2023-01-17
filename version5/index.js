@@ -22,7 +22,7 @@ var brandLogoURL = landing_page.brandLogo || null;
 var startScreenText = landing_page.startScreenText || null;
 var startScreenTextColor = landing_page.startScreenTextColor || rgb(49, 99, 210);
 var start_cta_Bg_color = landing_page.start_cta_Bg_color || rgb(49, 99, 210);
-var start_cta_text = landing_page.start_cta_text || null;
+var start_cta_text = landing_page.start_cta_text || 'Start Survey';
 
 //thanks you page values from config
 var thankyou_text = thankyou_page.ThankYouText || null;
