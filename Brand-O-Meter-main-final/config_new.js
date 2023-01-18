@@ -1,6 +1,6 @@
 var finalConfiguration = {
     "survey_config": {
-        "response_server": "https://test-asia-south1-brandometer-radiom.cloudfunctions.net/receiver?type=survey&id={survey_id}&seg={seg}&response={responses}&visual={visual_responses}&creative_size={size}&randomtimestamp={random_timestamp}&bomid={bomid}×={time_measurement}",
+        "response_server": "https://test-asia-south1-brandometer-radiom.cloudfunctions.net/receiver?type=survey&id={survey_id}&seg={seg}&response={responses}&visual={visual_responses}&creative_size={size}&randomtimestamp={random_timestamp}&bomid={bomid}&times={time_measurement}",
         "id": "c20b25a9-2312-4f7d-9512-f92b971fd83e",
         "seg": "default",
         "questions": [{
