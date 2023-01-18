@@ -1,7 +1,7 @@
 var finalConfiguration = {
     "survey_config": {
-        "response_server": "https://test-asia-south1-brandometer-radiom.cloudfunctions.net/receiver?type=survey&id={survey_id}&seg={seg}&response={responses}&visual={visual_responses}&creative_size={size}&randomtimestamp={random_timestamp}&bomid={bomid}&times={time_measurement}",
-        "id": "98652f4c-4c17-4fbf-8e68-19c1cfeea3e4",
+        "response_server": "https://test-asia-south1-brandometer-radiom.cloudfunctions.net/receiver?type=survey&id={survey_id}&seg={seg}&response={responses}&visual={visual_responses}&creative_size={size}&randomtimestamp={random_timestamp}&bomid={bomid}×={time_measurement}",
+        "id": "c20b25a9-2312-4f7d-9512-f92b971fd83e",
         "seg": "default",
         "questions": [{
             "id": "1",
@@ -25,7 +25,7 @@ var finalConfiguration = {
         }, {
             "id": "2",
             "type": "MULTIPLE_OPTION",
-            "text": "Are you aware that there are Tuberculosis (TB) related programs undertaken by the government?",
+            "text": "Are you aware that there are Tuberculosis (TB) related programs undertaken by the government? ",
             "options": [{
                 "role": "option",
                 "id": "C",
@@ -267,7 +267,7 @@ var finalConfiguration = {
         "exit_url": "https://www.google.com",
         "carousel_images": [],
         "thankyou_text": "Next",
-        "trackers": ["https://www.googly.com/lastpage", "https://www.googly.com/lastpage"],
+        "trackers": ["https://www.googly.com", "https://www.googly.com"],
         "trackers_first_interaction": ["https://www.googly.com", "https://www.googly.com"],
         "trackers_creative_load": ["https://www.googly.com", "https://www.googly.com"],
         "global_tags": [{
@@ -278,21 +278,21 @@ var finalConfiguration = {
             "Domain": "www.domain.com"
         }],
         "global_tags_first_interaction": [{
-            "Property_id": "UA-1234567-88",
+            "Property_id": "UA-1234567-10",
             "Domain": "www.domain.com"
         }, {
-            "Property_id": "UA-1234567-9",
+            "Property_id": "UA-1234567-11",
             "Domain": "www.domain.com"
         }],
         "global_tags_creative_load": [{
-            "Property_id": "UA-1234567-88",
+            "Property_id": "UA-1234567-8",
             "Domain": "www.domain.com"
         }, {
             "Property_id": "UA-1234567-9",
-            "Domain": "www.domain1.com"
+            "Domain": "www.domain.com"
         }]
     },
-    "ui_config": {
+        "ui_config": {
         "creative_size": {
             "width": 300,
             "height": 250
@@ -320,7 +320,6 @@ var finalConfiguration = {
             "startScreenText": "We would like to hear your feedback",
             "start_cta_Bg_color": "#1155cc",
             "start_cta_text": "Start Survey",
-            "startscreen_subInfo": "",
             "startScreenTextColor": "#1155cc"
         },
         "lastscreen_configuration": {
@@ -339,6 +338,7 @@ var finalConfiguration = {
         }
     }
 }
+
 
 
 

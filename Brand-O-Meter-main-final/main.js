@@ -314,6 +314,9 @@ next_btn.addEventListener("click", function () {
         // console.log(responseObj);
         visualObj[que_obj_index + 1] = inputValue;
         // console.log(responseObj);
+        if (document.querySelector(".container_lable")) {
+            document.querySelector(".container_lable").style.display = 'none'
+        }
     } else {
         responseObj[que_obj_index + 1] = nextQueKey;
         visualObj[que_obj_index + 1] = visual_value;
