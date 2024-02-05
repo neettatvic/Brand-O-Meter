@@ -1,6 +1,6 @@
 # Brand-O-Meter
 
-The Brand-O-Meter is the survey for customer reviews of produces or services. Find the Demo Survey [Here]([url](https://neettatvic.github.io/Brand-O-Meter/Brand-O-Meter-main-final/index.html)) for the reference.
+The Brand-O-Meter is the survey for customer reviews of produces or services. Find the Demo Survey [Here]([url](https://neettatvic.github.io/Brand-O-Meter/Brand-O-Meter-main-final/index.html))/below for the reference.
 
 To measure brand impact and campaign efficiency, the creative of Brand-O-Meter is a solution to find answers and insights of the following questions:
 - What are the parameters to analyze the brand campaign?
